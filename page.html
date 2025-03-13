@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Média dos alunos</title>
+
+    <style>
+        body{
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+        body div{
+            margin: 0 auto;
+            padding: 15px;
+            border-radius: 10px;
+            background-color: lightblue;
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
+</head>
+<body>
+    <div>
+
+
+    <h1>Bem vindo à <span id="sala"></span></h1>
+    <br>
+    <div>
+        <h2>Média do aluno</h2>
+        <br>
+        <label for="">Nota 1</label><input type="text" id="nota1">
+        <br><label for="">Nota 2</label><input type="text" id="nota2">
+        <br><label for="">Nota 3</label><input type="text" id="nota3">
+        <br><label for="">Nota 4</label><input type="text" id="nota4">
+        <br>
+        <button onclick="media()">Calcular</button>
+    </div>
+    
+    <div>
+        <p id="aguardoNota1">Aguardando nota 1...</p>
+        <p id="aguardoNota2">Aguardando nota 2...</p>
+        <p id="aguardoNota3">Aguardando nota 3...</p>
+        <p id="aguardoNota4">Aguardando nota 4...</p>
+        <br>
+        <p id="media">Aguardando média...</p>
+    </div>
+</div>
+    <script>
+        document.getElementById("sala").innerHTML = localStorage.getItem("nomeSala")
+
+        function media(){
+            const nota1 = document.getElementById("nota1")
+            const nota2 = document.getElementById("nota2")
+            const nota3 = document.getElementById("nota3")
+            const nota4 = document.getElementById("nota4")
+
+            var media = (parseFloat(nota1.value)+
+                         parseFloat(nota2.value)+
+                         parseFloat(nota3.value)+
+                         parseFloat(nota4.value))/4
+
+            document.getElementById("aguardoNota1").innerHTML = nota1.value
+            document.getElementById("aguardoNota2").innerHTML = nota2.value
+            document.getElementById("aguardoNota3").innerHTML = nota3.value
+            document.getElementById("aguardoNota4").innerHTML = nota4.value
+
+            document.getElementById("media").innerHTML = "Média total:" + media
+        }
+    </script>
+</body>
+</html>
